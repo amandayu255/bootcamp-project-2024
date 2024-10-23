@@ -10,9 +10,10 @@ This is how we will be tracking your milestones throughout bootcamp! By the end 
 1. Click on the green <> Code button above the file list.
 2. Go to the "Local" tab
 3. Copy the HTTPS link
-4. Go to VS Code and do Ctrl/Cmd + Shift + P
-5. Search for the "Git: Clone" action and select
-6. Paste in the repo link and clone
+4. Create a folder called **H4I**
+5. Open the **H4I** folder in your terminal
+6. Type `git clone` and paste the HTTPS link
+7. Press Enter, then `cd` into your cloned repository
 
 ## Creating a PR:
 
