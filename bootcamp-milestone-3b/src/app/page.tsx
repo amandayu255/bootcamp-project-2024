@@ -1,6 +1,5 @@
 import React from "react";
-import blogs from "./blogData";
-import BlogPreview from "./components/blogPreview";
+import "./Home.css";
 
 export default function Home() {
   return (
@@ -21,11 +20,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-
       </main>
-      <footer className="footer">
-        © 2024 Personal Website | All Rights Reserved
-      </footer>
     </div>
   );
 }

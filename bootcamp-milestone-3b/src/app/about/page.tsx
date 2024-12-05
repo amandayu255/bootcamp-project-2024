@@ -1,9 +1,9 @@
 import React from "react";
-
+import "./About.css";
 
 export default function About() {
   return (
-    <div>
+    <div className="about-container">
       <h1 className="page-title">Contact</h1>
 
       <form id="contact-form">

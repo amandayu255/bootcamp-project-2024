@@ -1,4 +1,5 @@
 import React from "react";
+import './Resume.css'
 
 export default function Resume() {
   return (
@@ -75,7 +76,7 @@ export default function Resume() {
           </ul>
 
           <h3 className="entry-title">Break Through Tech AI Fellow</h3>
-          <p className="entry-info">Break Through Tech AI | May 2024 – Present</p>
+          <p className="entry-info">Break Through Tech AI | May 2024 - Present</p>
           <ul>
             <li>
               Selected from 3000+ applicants for Break Through Tech AI, a year-long fellowship program designed to support women and other underrepresented people in AI, ML, and Data Science

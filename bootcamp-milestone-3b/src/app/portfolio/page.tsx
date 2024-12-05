@@ -1,6 +1,7 @@
 import React from "react";
 import connectDB from "@/app/database/db";
 import Project from "@/app/database/projectSchema";
+import "./Portfolio.css";
 
 async function getProjects() {
   await connectDB();
@@ -17,22 +18,17 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <div>
-      <h1>Project List</h1>
+    <div className="projects-container">
+      <h1>My Portfolio</h1>
 
-      <div>
+      <div className="project-list">
         {projects.length > 0 ? (
           projects.map((project) => (
-            <div key={project.slug}>
+            <div className="project-item" key={project.slug}>
               <h2>{project.title}</h2>
               <p>{project.description}</p>
               <img src={project.image} alt={project.image_alt} />
-              {/* <ul>
-                {project.tags?.map((tag, index) => (
-                  <li key={index}>{tag}</li>
-                ))}
-              </ul> */}
-              
+
               <p>
                 {project.links?.github && (
                   <a
@@ -59,7 +55,7 @@ export default async function ProjectsPage() {
             </div>
           ))
         ) : (
-          <p>No projects found.</p>
+          <p className="no-projects-message">No projects found.</p>
         )}
       </div>
     </div>

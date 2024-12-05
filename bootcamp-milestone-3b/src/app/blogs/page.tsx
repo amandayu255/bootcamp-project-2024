@@ -1,6 +1,7 @@
 import React from "react";
 import connectDB from "@/app/database/db";
 import Blog from "@/app/database/blogSchema";
+import "./Blogs.css";
 
 async function getBlogs() {
   await connectDB();
@@ -16,13 +17,13 @@ export default async function BlogsPage() {
   const blogs = await getBlogs();
 
   return (
-    <div>
-      <h1>Blog List</h1>
-      
-      <div>
+    <div className="blogs-container">
+      <h1>My Blogs</h1>
+
+      <div className="blog-list">
         {blogs.length > 0 ? (
           blogs.map((blog) => (
-            <div key={blog.slug}>
+            <div className="blog-item" key={blog.slug}>
               <h2>{blog.title}</h2>
               <p>{blog.description}</p>
               <img src={blog.image} alt={blog.image_alt} />
