@@ -1,0 +1,21 @@
+.blogPreview {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.blogPreview h3 {
+  margin: 0 0 10px 0;
+}
+
+.blogPreview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.blogPreview p {
+  margin: 5px 0;
+}
