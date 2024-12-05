@@ -11,6 +11,12 @@ type Blog = {
   comments: string[];
 };
 
+const commentSchema = new mongoose.Schema({
+  user: { type: String, required: true },
+  comment: { type: String, required: true },
+  time: { type: Date, default: Date.now },
+});
+
 const blogSchema = new Schema<Blog>({
   title: { type: String, required: true },
   slug: { type: String, required: true },
@@ -19,7 +25,7 @@ const blogSchema = new Schema<Blog>({
   content: { type: String, required: true },
   image: { type: String, required: true },
   image_alt: { type: String, required: true },
-  comments: { type: [String], default: [] },
+  comments: [commentSchema],
 });
 
 const Blog = mongoose.models["blogs"] || mongoose.model("blogs", blogSchema);
