@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link"; 
 import connectDB from "@/app/database/db";
 import Project from "@/app/database/projectSchema";
 import "./Portfolio.css";
@@ -27,8 +28,13 @@ export default async function ProjectsPage() {
             <div className="project-item" key={project.slug}>
               <h2>{project.title}</h2>
               <p>{project.description}</p>
-              <img src={project.image} alt={project.image_alt} />
-
+              <Link href={`/portfolio/${project.slug}`}>
+                <img
+                  src={project.image}
+                  alt={project.image_alt}
+                  className="project-image"
+                />
+              </Link>
               <p>
                 {project.links?.github && (
                   <a
