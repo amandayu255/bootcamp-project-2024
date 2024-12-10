@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Comment from "@/app/components/Comment"; 
+import Comment from "@/app/components/Comment";
 import "./CommentsSection.css";
 
 type CommentType = {
@@ -12,20 +12,20 @@ type CommentType = {
 
 type CommentsSectionProps = {
   slug: string;
-  initialComments: CommentType[];
+  initialComments?: CommentType[];
 };
 
 export default function CommentsSection({
   slug,
-  initialComments,
+  initialComments = [],
 }: CommentsSectionProps) {
-  const [comments, setComments] = useState(initialComments);
+  const [comments, setComments] = useState<CommentType[]>(initialComments);
   const [newComment, setNewComment] = useState({ user: "", comment: "" });
 
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/api/Blogs/${slug}/comments`, {
+      const res = await fetch(`/api/Blogs/${slug}/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,8 +38,8 @@ export default function CommentsSection({
       }
 
       const updatedComments = await res.json();
-      setComments(updatedComments); 
-      setNewComment({ user: "", comment: "" }); 
+      setComments(updatedComments);
+      setNewComment({ user: "", comment: "" });
     } catch (err) {
       console.error("Error posting comment:", err);
     }
@@ -49,23 +49,28 @@ export default function CommentsSection({
     <div className="comments-section">
       <h2>Comments</h2>
       {comments.length > 0 ? (
-        comments.map((comment, index) => <Comment key={index} comment={comment} />)
+        comments.map((comment, index) => (
+          <Comment key={index} comment={comment} />
+        ))
       ) : (
         <p>No comments yet. Be the first to comment!</p>
       )}
-
       <form onSubmit={handleCommentSubmit} className="comment-form">
         <input
           type="text"
           placeholder="Your name"
           value={newComment.user}
-          onChange={(e) => setNewComment({ ...newComment, user: e.target.value })}
+          onChange={(e) =>
+            setNewComment({ ...newComment, user: e.target.value })
+          }
           required
         />
         <textarea
           placeholder="Your comment"
           value={newComment.comment}
-          onChange={(e) => setNewComment({ ...newComment, comment: e.target.value })}
+          onChange={(e) =>
+            setNewComment({ ...newComment, comment: e.target.value })
+          }
           required
         />
         <button type="submit">Post Comment</button>
