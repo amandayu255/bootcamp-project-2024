@@ -30,7 +30,7 @@ export default async function Blog({ params: { slug } }: Props) {
     return (
       <div className="blog-container">
         <h1>Blog Not Found</h1>
-        <p>Sorry, the blog you're looking for does not exist.</p>
+        <p>Sorry, the blog you are looking for does not exist.</p>
       </div>
     );
   }
