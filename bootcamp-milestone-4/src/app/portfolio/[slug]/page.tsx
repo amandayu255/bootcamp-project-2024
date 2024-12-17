@@ -30,7 +30,7 @@ export default async function Project({ params: { slug } }: Props) {
     return (
       <div className="portfolio-container">
         <h1>Project Not Found</h1>
-        <p>Sorry, the project you're looking for does not exist.</p>
+        <p>Sorry, the project you are looking for does not exist.</p>
       </div>
     );
   }
