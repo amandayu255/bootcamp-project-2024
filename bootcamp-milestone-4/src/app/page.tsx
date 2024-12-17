@@ -13,7 +13,6 @@ export default function Home() {
               alt="A programmer coding"
               width={800}
               height={412} 
-              layout="responsive"
             />
             <div className="about-text">
               <p>
