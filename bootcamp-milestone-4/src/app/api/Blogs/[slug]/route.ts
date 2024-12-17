@@ -2,20 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/app/database/db";
 import blogSchema from "@/app/database/blogSchema";
 
-type IParams = {
-  params: {
-    slug: string;
-  };
-};
+export async function GET(req: NextRequest) {
+  await connectDB();
 
-export async function GET(req: NextRequest, { params }: IParams) {
-  await connectDB(); 
-  const { slug } = params; 
+  const slug = req.nextUrl.pathname.split("/").pop();
+
+  if (!slug) {
+    return NextResponse.json({ error: "Slug parameter is missing." }, { status: 400 });
+  }
 
   try {
     const blog = await blogSchema.findOne({ slug }).orFail();
     return NextResponse.json(blog);
-  } catch {
-    return NextResponse.json("Blog not found.", { status: 404 });
+  } catch (err) {
+    console.error("Error fetching blog:", err);
+    return NextResponse.json({ error: "Blog not found." }, { status: 404 });
   }
 }

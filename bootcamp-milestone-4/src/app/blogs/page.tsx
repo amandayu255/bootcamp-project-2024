@@ -9,7 +9,7 @@ async function getBlogs() {
   try {
     const blogs = await Blog.find().sort({ date: -1 }).orFail();
     return blogs;
-  } catch (err) {
+  } catch {
     return [];
   }
 }
