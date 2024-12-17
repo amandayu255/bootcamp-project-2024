@@ -1,5 +1,6 @@
 import React from "react";
 import CommentsSection from "@/app/components/CommentsSection";
+import Image from "next/image";
 import "./Project.css";
 
 type Props = {
@@ -40,7 +41,15 @@ export default async function Project({ params: { slug } }: Props) {
       <h1>{project.title}</h1>
       <p>{project.description}</p>
       {project.image && (
-        <img src={project.image} alt={project.image_alt || "Project image"} />
+        <div className="project-image">
+          <Image
+            src={project.image}
+            alt={project.image_alt || "Project image"}
+            width={800}
+            height={500}
+            priority
+          />
+        </div>
       )}
       <div className="project-content">{project.content}</div>
       <div className="project-links">
