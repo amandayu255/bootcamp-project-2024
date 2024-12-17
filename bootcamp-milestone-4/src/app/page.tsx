@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import "./Home.css";
 
 export default function Home() {
@@ -7,9 +8,12 @@ export default function Home() {
       <main>
         <div className="about">
           <div className="about-image">
-            <img
+            <Image
               src="https://usa.bootcampcdn.com/wp-content/uploads/sites/119/2020/12/tes_gen_blog_code7-1-800x412.jpg"
-              alt="a programmer coding"
+              alt="A programmer coding"
+              width={800}
+              height={412} 
+              layout="responsive"
             />
             <div className="about-text">
               <p>
