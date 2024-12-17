@@ -2,7 +2,8 @@ import React from "react";
 import connectDB from "@/app/database/db";
 import Blog from "@/app/database/blogSchema";
 import Link from "next/link";
-import "./Blogs.css";
+import Image from "next/image";
+import "./Blogs.css"; // Import your global CSS file
 
 async function getBlogs() {
   await connectDB();
@@ -28,12 +29,20 @@ export default async function BlogsPage() {
               <div className="blog-item">
                 <h2>{blog.title}</h2>
                 <p>{blog.description}</p>
-                <img src={blog.image} alt={blog.image_alt} />
+                {blog.image && (
+                  <Image
+                    src={blog.image}
+                    alt={blog.image_alt || "Blog image"}
+                    width={800}
+                    height={500}
+                    priority
+                  />
+                )}
               </div>
             </Link>
           ))
         ) : (
-          <p>No blogs found.</p>
+          <p className="no-blogs">No blogs found.</p>
         )}
       </div>
     </div>
