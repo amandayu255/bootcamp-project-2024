@@ -2,17 +2,21 @@ import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/app/database/db";
 import blogSchema from "@/app/database/blogSchema";
 
-export async function POST(req: NextRequest, { params }: { params: { slug: string } }) {
+export async function POST(req: NextRequest) {
   await connectDB();
 
-  const { slug } = params;
-  const { user, comment } = await req.json();
-
-  if (!user || !comment) {
-    return NextResponse.json({ error: "User and comment are required" }, { status: 400 });
-  }
-
   try {
+    const slug = req.nextUrl.pathname.split("/").slice(-2, -1)[0];
+
+    const { user, comment } = await req.json();
+
+    if (!user || !comment) {
+      return NextResponse.json(
+        { error: "User and comment are required" },
+        { status: 400 }
+      );
+    }
+
     const blog = await blogSchema.findOne({ slug }).orFail();
 
     blog.comments.push({ user, comment, time: new Date() });
