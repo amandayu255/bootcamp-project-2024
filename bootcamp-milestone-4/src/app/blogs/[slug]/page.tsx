@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import CommentsSection from "@/app/components/CommentsSection";
 import "./Blog.css";
 
@@ -23,7 +24,10 @@ async function getBlog(slug: string) {
   }
 }
 
-export default async function Blog({ params: { slug } }: Props) {
+export default async function Blog(props: Props) {
+  const { params } = props;
+  const { slug } = params;
+
   const blog = await getBlog(slug);
 
   if (!blog) {
@@ -39,7 +43,17 @@ export default async function Blog({ params: { slug } }: Props) {
     <div className="blog-container">
       <h1>{blog.title}</h1>
       <p>{blog.content}</p>
-      {blog.image && <img src={blog.image} alt={blog.image_alt || "Blog image"} />}
+      {blog.image && (
+        <div className="blog-image">
+          <Image
+            src={blog.image}
+            alt={blog.image_alt || "Blog image"}
+            width={800}
+            height={500}
+            priority
+          />
+        </div>
+      )}
 
       <CommentsSection slug={slug} initialComments={blog.comments} />
     </div>
