@@ -16,7 +16,7 @@ export async function GET(req: Request, { params }: IParams) {
   try {
     const project = await Project.findOne({ slug }).orFail();
     return NextResponse.json(project);
-  } catch (err) {
+  } catch {
     return NextResponse.json("Project not found.", { status: 404 });
   }
 }
