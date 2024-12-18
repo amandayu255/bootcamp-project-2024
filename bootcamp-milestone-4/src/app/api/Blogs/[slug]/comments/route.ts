@@ -2,12 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/app/database/db";
 import blogSchema from "@/app/database/blogSchema";
 
-interface IParams {
-  params: Promise<{
-    slug: string;
-  }>;
-}
-
 export async function POST(req: NextRequest) {
   await connectDB();
 
