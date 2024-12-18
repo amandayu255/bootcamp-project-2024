@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/app/database/db";
-import Project from "@/app/database/projectSchema";
+import projectSchema from "@/app/database/projectSchema";
 
 type IParams = {
   params: {
@@ -14,7 +14,7 @@ export async function GET(req: Request, { params }: IParams) {
   const { slug } = params;
 
   try {
-    const project = await Project.findOne({ slug }).orFail();
+    const project = await projectSchema.findOne({ slug }).orFail();
     return NextResponse.json(project);
   } catch {
     return NextResponse.json("Project not found.", { status: 404 });
