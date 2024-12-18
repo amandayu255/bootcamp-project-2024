@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/app/database/db";
-import Project from "@/app/database/projectSchema";
+import projectSchema from "@/app/database/projectSchema";
 
-export async function POST(req: NextRequest, context: { params: { slug: string } }) {
+export async function POST(req: NextRequest) {
   await connectDB();
 
   try {
-    const { slug } = context.params;
+    const slug = req.nextUrl.pathname.split("/").slice(-2, -1)[0];
 
     const { user, comment } = await req.json();
 
@@ -17,12 +17,12 @@ export async function POST(req: NextRequest, context: { params: { slug: string }
       );
     }
 
-    const project = await Project.findOne({ slug }).orFail();
+    const project = await projectSchema.findOne({ slug }).orFail();
 
     project.comments.push({ user, comment, time: new Date() });
     await project.save();
 
-    return NextResponse.json(project.comments, { status: 200 });
+    return NextResponse.json(project.comments);
   } catch (err) {
     console.error("Error saving comment:", err);
     return NextResponse.json({ error: "Failed to save comment" }, { status: 500 });
