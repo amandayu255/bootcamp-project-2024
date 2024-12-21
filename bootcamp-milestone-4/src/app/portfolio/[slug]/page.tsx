@@ -79,9 +79,11 @@ export default async function Project({ params }: Props) {
         )}
       </div>
       
-      {/* <CommentsSection slug={slug} initialComments={project.comments} /> */}
-
-      <CommentsSection slug={slug} type="portfolio" />
+      <CommentsSection
+        slug={slug}
+        type="Portfolio"
+        initialComments={project.comments || []}
+      />
     </div>
   );
 }
