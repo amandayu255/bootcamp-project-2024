@@ -55,7 +55,8 @@ export default async function Blog({ params }: Props) {
         </div>
       )}
 
-      <CommentsSection slug={slug} initialComments={blog.comments} />
+      {/* <CommentsSection slug={slug} initialComments={blog.comments} /> */}
+      <CommentsSection slug={slug} type="blog" />
     </div>
   );
 }
