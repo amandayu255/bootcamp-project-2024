@@ -8,20 +8,19 @@ type Props = {
 };
 
 async function getBlog(slug: string) {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/Blogs/${slug}`, {
-      cache: "no-store",
-    });
+	try {
+		const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/Blogs/${slug}`, {
+			cache: "no-store",	
+		})
+		if (!res.ok) {
+			throw new Error("Failed to fetch blog");
+		}
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch blog");
-    }
-
-    return res.json();
-  } catch (err) {
-    console.error(`Error fetching blog: ${err}`);
-    return null;
-  }
+		return res.json();
+	} catch (err: unknown) {
+		console.log(`error: ${err}`);
+		return null;
+	}
 }
 
 export default async function Blog({ params }: Props) {
