@@ -4,7 +4,7 @@ import CommentsSection from "@/app/components/CommentsSection";
 import "./Blog.css";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 async function getBlog(slug: string) {
@@ -24,10 +24,8 @@ async function getBlog(slug: string) {
   }
 }
 
-export default async function Blog(props: Props) {
-  const { params } = props;
-  const { slug } = params;
-
+export default async function Blog({ params }: Props) {
+  const { slug } = await params;
   const blog = await getBlog(slug);
 
   if (!blog) {

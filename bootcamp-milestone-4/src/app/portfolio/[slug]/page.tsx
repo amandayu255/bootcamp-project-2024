@@ -4,7 +4,7 @@ import Image from "next/image";
 import "./Project.css";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 async function getProject(slug: string) {
@@ -24,7 +24,8 @@ async function getProject(slug: string) {
   }
 }
 
-export default async function Project({ params: { slug } }: Props) {
+export default async function Project({ params }: Props) {
+  const { slug } = await params;
   const project = await getProject(slug);
 
   if (!project) {
