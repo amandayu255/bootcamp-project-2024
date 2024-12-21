@@ -12,11 +12,13 @@ type CommentType = {
 
 type CommentsSectionProps = {
   slug: string;
+  type: "Blogs" | "Portfolio";
   initialComments?: CommentType[];
 };
 
 export default function CommentsSection({
   slug,
+  type,
   initialComments = [],
 }: CommentsSectionProps) {
   const [comments, setComments] = useState<CommentType[]>(initialComments);
@@ -25,7 +27,7 @@ export default function CommentsSection({
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch(`/api/Blogs/${slug}/comments`, {
+      const res = await fetch(`/api/${type}/${slug}/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
