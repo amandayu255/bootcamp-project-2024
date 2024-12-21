@@ -9,7 +9,7 @@ type Props = {
 
 async function getProject(slug: string) {
   try {
-    const res = await fetch(`http://localhost:3000/api/Portfolio/${slug}`, {
+    const res = await fetch(`/api/Portfolio/${slug}`, {
       cache: "no-store",
     });
 
