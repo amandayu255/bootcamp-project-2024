@@ -2,7 +2,15 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./blogPreview.module.css";
-import { Blog } from "../blogData";
+
+export interface Blog {
+  title: string;
+  date: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  slug: string;
+}
 
 export default function BlogPreview({
   title,
