@@ -7,9 +7,11 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
 async function getBlog(slug: string) {
   try {
-    const res = await fetch(`/api/Blogs/${slug}`, {
+    const res = await fetch(`${baseUrl}/api/Blogs/${slug}`, {
       cache: "no-store",
     });
 
