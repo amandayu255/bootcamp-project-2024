@@ -28,7 +28,6 @@ export default function Resume() {
             <li>Introduction to Database Systems</li>
             <li>Theory of Computation I</li>
             <li>Introduction to Software Engineering</li>
-            <li>Programming Languages</li>
           </ul>
         </div>
       </section>
@@ -64,11 +63,13 @@ export default function Resume() {
           </ul>
         </div>
       </section>
+
       <section className="section">
         <h1 className="section-title">Experience</h1>
         <div className="entry">
+
           <h3 className="entry-title">AI Studio Intern @ Break Through Tech AI / Google</h3>
-          <p className="entry-info">Break Through Tech AI / Google | August 2024 - Present</p>
+          <p className="entry-info">Break Through Tech AI / Google | August 2024 - December 2024</p>
           <ul>
             <li>
               Develop a machine learning model that suggests relevant search queries to users based on their current search term and their past search history
@@ -85,23 +86,7 @@ export default function Resume() {
               Contributed towards 12-month long program including Machine Learning Certificate with Cornell faculty, experiential learning experiences, and mentorship from industry professionals
             </li>
           </ul>
-
-          <h3 className="entry-title">Capital One Tech Mini Mester Program Participant</h3>
-          <p className="entry-info">Generation Why | July 2024 - August 2024</p>
-          <ul>
-            <li>
-              1 out of 70 exclusively selected to participate in a 5-day immersive experience to enhance technical and soft skills
-            </li>
-            <li>
-              Built a CLI-Based Coding Project in 24 hours and presented in front of Capital One leadership
-            </li>
-            <li>
-              Participated in a progressive learning experience that involved workshops around Node, NPM, Javascript, and more
-            </li>
-            <li>
-              Connected with 8+ Capital One Senior Leadership members and 50+ Capital One Software Engineers to hear about the diversity in technology and key tips on how to break into the space
-            </li>
-          </ul>
+          
         </div>
       </section>
     </div>
