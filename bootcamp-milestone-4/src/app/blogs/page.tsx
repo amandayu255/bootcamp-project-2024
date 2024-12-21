@@ -3,7 +3,7 @@ import connectDB from "@/app/database/db";
 import Blog from "@/app/database/blogSchema";
 import Link from "next/link";
 import Image from "next/image";
-import "./Blogs.css"; // Import your global CSS file
+import "./Blogs.css";
 
 async function getBlogs() {
   await connectDB();
