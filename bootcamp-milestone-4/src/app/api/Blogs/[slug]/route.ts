@@ -5,7 +5,7 @@ import blogSchema from "@/app/database/blogSchema";
 export async function GET(req: NextRequest) {
   await connectDB();
 
-  const slug = req.nextUrl.pathname.split("/").pop();
+  const slug = req.url.split('/').slice(-1)[0]
 
   if (!slug) {
     return NextResponse.json({ error: "Slug parameter is missing." }, { status: 400 });

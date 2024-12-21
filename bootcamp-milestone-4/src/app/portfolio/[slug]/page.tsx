@@ -7,11 +7,9 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
 async function getProject(slug: string) {
   try {
-    const res = await fetch(`${baseUrl}/api/Portfolio/${slug}`, {
+    const res = await fetch(`${process.env.URL}/api/Portfolio/${slug}`, {
       cache: "no-store",
     });
 
